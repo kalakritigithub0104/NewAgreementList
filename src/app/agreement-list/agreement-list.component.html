@@ -1,0 +1,141 @@
+<nav style="background-color: rgba(112, 128, 144, 0.299);">
+    <!-- Navbar content -->
+
+    <div class="navbar-content">
+            <div class="list">
+       <p><a href="#">List View</a></p>
+       <p><a href="#">Hierarchial View</a></p>
+     </div>
+     <div class= "navbar navbar-light justify-content-end">
+      <!-- <div class="filter">
+       <p>DEFAULT FILTERS:</p>
+       <i class="fas fa-chevron-down "></i>
+       </div> -->
+      <div class="filter"> 
+       <p>DEFAULT FILTERS:</p>
+       <select name="drop" id="drops">
+        <option ></option>
+        <option >Add new configurations</option>          
+    </select>
+  </div>
+       <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="defaultCheckbox">
+        <label class="form-check-label" for="defaultCheckbox">Is Default</label>
+      </div>
+      <div class="icons">
+        <i class="fa-solid fa-trash"></i>
+        <i class="fa-solid fa-file-excel"></i>
+        <i class="fa-solid fa-file-csv"></i>
+        <i class="fa-solid fa-print"></i>
+        </div>
+        <div class="search-box">
+          <input type="text" class="search-input" placeholder="Search" [(ngModel)]="searchQuery">
+          <button class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="spacer"></div>
+        <!-- <button class="new1" (click)="openFormPopup()">
+  <i class="fa fa-plus" aria-hidden="true"></i><span class="button-text">New Entity</span>
+</button> -->
+<button [routerLink]="['/Agreement/New-entry']" class="new1"><i class="fa fa-plus" aria-hidden="true"></i><span class="button-text">New Entity</span></button>
+        </div>
+      </div>
+    </nav>
+
+    
+<div class="container-flex">
+    <select name="drop" id="drop">
+        <option >25</option>
+        <option >125</option>
+        <option >225</option>    
+    </select>
+    <label class="drop2">entries</label>
+    <div class="settings"><i class="bi bi-gear-wide icon-large" ></i></div>
+    <div class="table-responsive">
+    <table class="table table-bordered"> 
+        <thead>
+            <tr>
+                <th></th>
+            <th></th>
+                <th scope="col">AgreementTypeName
+                    <div class="dropdown float-end">
+                        <button class="btn btn-sm  btn-secondary dropdown-toggle" type="button" id="firstNameDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="firstNameDropdown">
+                          <li><a class="dropdown-item" (click)="sortAscending()"><i class="fa fa-sort-alpha-asc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Ascending</a></li>
+                          <li><a class="dropdown-item" (click)="sortDescending()"><i class="fa fa-sort-alpha-desc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Descending</a></li>
+                          <li><a class="dropdown-item" (click)="removeSorting()"><i class="fa fa-random" aria-hidden="true" style="margin-right: 5px;"></i>Remove Sorting</a></li>
+                        </ul>
+                      </div>
+                </th>
+                <th scope="col">CreatedBy
+                    <div class="dropdown float-end">
+                       <button class="btn btn-sm  btn-secondary dropdown-toggle" type="button" id="firstNameDropdown" data-bs-toggle="dropdown" aria-expanded="false"> </button>
+                        <ul class="dropdown-menu" aria-labelledby="firstNameDropdown">
+                          <li><a class="dropdown-item" (click)="sortAscendingCreatedBy()"><i class="fa fa-sort-alpha-asc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Ascending</a></li>
+                          <li><a class="dropdown-item" (click)="sortDescendingCreatedBy()"><i class="fa fa-sort-alpha-desc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Descending</a></li>
+                          <li><a class="dropdown-item" (click)="removeSortingCreatedBy()"><i class="fa fa-random" aria-hidden="true" style="margin-right: 5px;"></i>Remove Sorting</a></li>
+                        </ul>
+                     </div>
+                </th>
+                <th scope="col">CreatedOn
+                    <div class="dropdown float-end">
+                        <button class="btn btn-sm  btn-secondary dropdown-toggle" type="button" id="firstNameDropdown" data-bs-toggle="dropdown" aria-expanded="false"> </button>
+                         <ul class="dropdown-menu" aria-labelledby="firstNameDropdown">
+                           <li><a class="dropdown-item" (click)="sortAscendingCreatedOn()"><i class="fa fa-sort-alpha-asc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Ascending</a></li>
+                           <li><a class="dropdown-item" (click)="sortDescendingCreatedOn()"><i class="fa fa-sort-alpha-desc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Descending</a></li>
+                           <li><a class="dropdown-item" (click)="removeSortingCreatedOn()"><i class="fa fa-random" aria-hidden="true" style="margin-right: 5px;"></i>Remove Sorting</a></li>
+                         </ul>
+                      </div>  
+                </th>
+                <th scope="col">LastModifiedBy
+                    <div class="dropdown float-end">
+                        <button class="btn btn-sm  btn-secondary dropdown-toggle" type="button" id="firstNameDropdown" data-bs-toggle="dropdown" aria-expanded="false"> </button>
+                         <ul class="dropdown-menu" aria-labelledby="firstNameDropdown">
+                           <li><a class="dropdown-item" (click)="sortAscendingModifiedBy()"><i class="fa fa-sort-alpha-asc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Ascending</a></li>
+                           <li><a class="dropdown-item" (click)="sortDescendingModifiedBy()"><i class="fa fa-sort-alpha-desc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Descending</a></li>
+                           <li><a class="dropdown-item" (click)="removeSortingModifiedBy()"><i class="fa fa-random" aria-hidden="true" style="margin-right: 5px;"></i>Remove Sorting</a></li>
+                         </ul>
+                      </div>   
+                </th>
+                <th scope="col">LastModifiedOn
+                    <div class="dropdown float-end">
+                        <button class="btn btn-sm  btn-secondary dropdown-toggle" type="button" id="firstNameDropdown" data-bs-toggle="dropdown" aria-expanded="false"> </button>
+                         <ul class="dropdown-menu" aria-labelledby="firstNameDropdown">
+                           <li><a class="dropdown-item" (click)="sortAscendingModifiedOn()"><i class="fa fa-sort-alpha-asc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Ascending</a></li>
+                           <li><a class="dropdown-item" (click)="sortDescendingModifiedOn()"><i class="fa fa-sort-alpha-desc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Descending</a></li>
+                           <li><a class="dropdown-item" (click)="removeSortingModifiedOn()"><i class="fa fa-random" aria-hidden="true"></i>Remove Sorting</a></li>
+                         </ul>
+                      </div>    
+                </th>
+                <th scope="col">Status   
+                    <div class="dropdown float-end">
+                        <button class="btn btn-sm  btn-secondary dropdown-toggle" type="button" id="firstNameDropdown" data-bs-toggle="dropdown" aria-expanded="false"> </button>
+                         <ul class="dropdown-menu" aria-labelledby="firstNameDropdown">
+                           <li><a class="dropdown-item" (click)="sortAscendingStatus()"><i class="fa fa-sort-alpha-asc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Ascending</a></li>
+                           <li><a class="dropdown-item" (click)="sortDescendingStatus()"><i class="fa fa-sort-alpha-desc" aria-hidden="true" style="margin-right: 5px;"></i>Sort Descending</a></li>
+                           <li><a class="dropdown-item" (click)="removeSortingStatus()"><i class="fa fa-random" aria-hidden="true"></i>Remove Sorting</a></li>
+                         </ul>
+                      </div>   
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of filteredCurrencies">
+                <td><i class="fa fa-pencil" id="editicon" aria-hidden="true" matTooltip="Edit"></i></td>
+                <td><i class="fa-solid fa-copy"></i></td>
+                <td>{{a.agreementTypeName}}</td>
+                <td>{{a.createdBy}}</td>
+                <td>{{a.createdOn}}</td>
+                <td>{{a.lastModifiedBy}}</td>
+                <td>{{a.lastModifiedOn}}</td>
+                <td class="isactive"><span [ngClass]="{ 'active-button': a.isActive, 'inactive-button': !a.isActive }">{{a.isActive ? 'Active' : 'Inactive'}}</span> </td>
+            </tr>
+         </tbody>
+    </table>
+  </div>
+    <mat-paginator [length]="100"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               aria-label="Select page">
+          </mat-paginator>
+</div>
